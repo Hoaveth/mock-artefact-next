@@ -1,16 +1,9 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": [
-      "tsconfig.json"
-    ],
-    "createDefaultProgram": true
+    "project": ["./tsconfig.json"]
   },
-  "plugins": [
-    "@typescript-eslint",
-    "prettier",
-    "import"
-  ],
+  "plugins": ["@typescript-eslint", "prettier", "import"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -22,10 +15,10 @@
     "prettier"
   ],
   "rules": {
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "error",
-      "import/order": [
-      "error",
+    "@typescript-eslint/no-unused-vars": 1,
+    "@typescript-eslint/no-explicit-any": 2,
+    "import/order": [
+      2,
       {
         "groups": ["builtin", "external", "internal"],
         "pathGroups": [
@@ -44,45 +37,30 @@
       }
     ],
     "id-length": [
-    "error",
+      2,
       {
-        "exceptions": [
-          "i"
-        ]
+        "exceptions": ["i", "x"]
       }
     ],
     "@typescript-eslint/naming-convention": [
-     "error",
+      2,
       {
         "selector": "variable",
-        "format": [
-          "camelCase",
-          "UPPER_CASE"
-        ]
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"]
       },
       {
         "selector": "variable",
-        "format": [
-          "PascalCase"
-        ],
-        "types": [
-          "boolean"
-        ],
-        "prefix": [
-          "is",
-          "should",
-          "has",
-          "can",
-          "did",
-          "will",
-          "was"
-        ]
-      }
-    ],
-    "line-comment-position": [
-     "error",
+        "format": ["PascalCase"],
+        "types": ["boolean"],
+        "prefix": ["is", "should", "has", "can", "did", "will", "was"]
+      },
       {
-        "position": "above"
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
       }
     ]
   }
