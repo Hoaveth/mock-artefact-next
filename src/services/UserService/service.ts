@@ -3,7 +3,7 @@ import axios from 'axios';
 import { IUserData } from '.';
 
 const axiosInstance = axios.create({
-  baseURL: process.env.BACKEND_API_URL,
+  baseURL: process.env.NEXT_PUBLIC_BACKEND_API_URL,
   timeout: 60000,
 });
 
