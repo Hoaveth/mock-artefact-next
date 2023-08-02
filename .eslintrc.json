@@ -52,7 +52,7 @@
         "selector": "variable",
         "format": ["PascalCase"],
         "types": ["boolean"],
-        "prefix": ["is", "should", "has", "can", "did", "will", "was"]
+        "prefix": ["is", "should", "has", "can", "did", "will", "was", "show"]
       },
       {
         "selector": "interface",
