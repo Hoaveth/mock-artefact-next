@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button, Container, Flex, Text } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
@@ -6,8 +6,9 @@ import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
 
+import styles from '@/pages/Home.module.css';
 import PostService, { IPostData } from '@/services/PostService';
-import styles from '@/styles/Home.module.css';
+import { useDefaultView } from '@/stores/useDefaultViewStore';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,12 +21,19 @@ interface IProps {
 }
 
 export default function Home({ posts }: IProps) {
+  //Store Usage Sample
+  const defaultView = useDefaultView();
+
   const [selectedPost, setSelectedPost] = useState<IPostData[]>([]);
 
   const handleClickPost = async (id: number) => {
     const data = await PostService.getById(id);
     setSelectedPost(posts.filter((post: IPostData) => data.id === post.id));
   };
+
+  useEffect(() => {
+    console.log(defaultView);
+  }, []);
 
   return (
     <>
@@ -65,7 +73,7 @@ export default function Home({ posts }: IProps) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const posts = await PostService.getAll();
-
+  console.log('SERVER', posts);
   return {
     props: { posts },
   };

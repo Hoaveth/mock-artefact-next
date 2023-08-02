@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Sidebar() {
   return (
     <div>
-      <Button variant={'primary'} size={'sm'} fontSize={12} width={100}>
+      <Button variant={'secondary'} size={'sm'} fontSize={12} width={100}>
         Test Button
       </Button>
     </div>

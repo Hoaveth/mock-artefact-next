@@ -3,7 +3,7 @@ import axios from 'axios';
 import { IPostData } from '.';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com/posts',
+  baseURL: process.env.BACKEND_API_URL,
   timeout: 60000,
 });
 

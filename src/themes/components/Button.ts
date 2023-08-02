@@ -2,30 +2,57 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 const baseStyle = {
-  fontWeight: 'regular',
+  fontWeight: 'thin',
 };
 
 const primaryVariant = {
-  bg: 'black',
-  color: 'white',
+  bg: '#000000',
+  color: '#ffffff',
   _hover: {
-    bg: '#6C6F4B',
-    color: 'white',
+    bg: '#757263',
+    color: '#ffffff',
+    transition: '.3s ease',
   },
 };
 
 const secondaryVariant = {
-  bg: '#DCDBD9',
-  color: 'gray.600',
+  bg: '#EEEDEB',
+  color: '#606060',
   _hover: {
-    bg: '#6C6F4B',
-    color: 'white',
+    bg: '#757263',
+    color: '#ffffff',
+    transition: '.3s ease',
+  },
+};
+
+const successVariant = {
+  bg: '#000000',
+  color: '#ffffff',
+  _hover: {
+    bg: '#7FBB27',
+    color: '#ffffff',
+    transition: '.3s ease',
+  },
+  _active: {
+    bg: '#7FBB27',
+    color: '#ffffff',
+  },
+};
+
+const dangerVariant = {
+  bg: '#000000',
+  color: '#ffffff',
+  _hover: {
+    bg: '#BF4545',
+    color: '#ffffff',
   },
 };
 
 const variants = {
   primary: primaryVariant,
   secondary: secondaryVariant,
+  success: successVariant,
+  danger: dangerVariant,
 };
 
 const Button: ComponentStyleConfig = {
