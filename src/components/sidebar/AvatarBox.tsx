@@ -13,7 +13,7 @@ const AvatarBox: React.FC = () => {
       callbackUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/auth/sign-in`,
       redirect: true,
     });
-
+    localStorage.clear();
     removeToken();
   };
 
