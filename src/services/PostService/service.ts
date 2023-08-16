@@ -1,58 +1,50 @@
-import axios from 'axios';
+import { axiosInstance } from '@/lib/http';
 
-import { IPostData } from '.';
+import {
+  CreatePostResponse,
+  GetPostByIdResponse,
+  GetPostsResponse,
+  PostData,
+  UpdatePostResponse,
+} from '.';
 
-const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BACKEND_API_URL,
-  timeout: 60000,
-});
+const pathUrl = '/posts';
 
 export const PostService = {
-  getAll: async function () {
+  getAll: async function (): Promise<GetPostsResponse> {
     try {
-      const { data } = await axiosInstance.request({
-        method: 'GET',
-        url: `?_limit=10`,
-      });
+      const { data } = await axiosInstance.get(`${pathUrl}?_limit=50`);
       return data;
     } catch (error) {
       console.error(error);
       throw error;
     }
   },
-  getById: async function (postId: number) {
+  getById: async function (postId: number): Promise<GetPostByIdResponse> {
     try {
-      const { data } = await axiosInstance.request({
-        method: 'GET',
-        url: `/${postId}`,
-      });
+      const data = await axiosInstance.get(`${pathUrl}/${postId}`);
       return data;
     } catch (error) {
       console.error(error);
       throw error;
     }
   },
-  create: async function (post: IPostData) {
+  create: async function (post: PostData): Promise<CreatePostResponse> {
     try {
-      const response = await axiosInstance.request({
-        method: 'POST',
-        url: `/api/v1/users`,
-        data: post,
-      });
-      return response;
+      const { data } = await axiosInstance.post(pathUrl, post);
+      return data;
     } catch (error) {
       console.error(error);
       throw error;
     }
   },
-  update: async function (postId: number, post: IPostData) {
+  update: async function (
+    postId: number,
+    post: PostData
+  ): Promise<UpdatePostResponse> {
     try {
-      const response = await axiosInstance.request({
-        method: 'PUT',
-        url: `/api/v1/users/${postId}`,
-        data: post,
-      });
-      return response;
+      const { data } = await axiosInstance.put(`/api/v1/users/${postId}`, post);
+      return data;
     } catch (error) {
       console.error(error);
       throw error;

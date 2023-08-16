@@ -1,4 +1,3 @@
-// components/Button.ts
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 const baseStyle = {
@@ -8,10 +7,18 @@ const baseStyle = {
 const primaryVariant = {
   bg: '#000000',
   color: '#ffffff',
+  _disabled: {
+    bg: '#757263',
+  },
   _hover: {
     bg: '#757263',
     color: '#ffffff',
     transition: '.3s ease',
+    _disabled: {
+      _hover: {
+        bg: '#757263',
+      },
+    },
   },
 };
 

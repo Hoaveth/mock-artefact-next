@@ -29,17 +29,23 @@
           }
         ],
         "pathGroupsExcludedImportTypes": ["react"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
+        "newlines-between": "always"
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+        "allowSeparatedGroups": true
       }
     ],
     "id-length": [
       2,
       {
-        "exceptions": ["i", "x"]
+        "exceptions": ["i", "x", "e"]
       }
     ],
     "@typescript-eslint/naming-convention": [
@@ -53,14 +59,6 @@
         "format": ["PascalCase"],
         "types": ["boolean"],
         "prefix": ["is", "should", "has", "can", "did", "will", "was", "show"]
-      },
-      {
-        "selector": "interface",
-        "format": ["PascalCase"],
-        "custom": {
-          "regex": "^I[A-Z]",
-          "match": true
-        }
       }
     ]
   }

@@ -10,5 +10,4 @@ const useDefaultViewStore = create<IDefaultViewState>()((set) => ({
   setDefaultView: (value) => set(() => ({ defaultView: value })),
 }));
 
-export const useDefaultView = () =>
-  useDefaultViewStore((state) => state.defaultView);
+export default useDefaultViewStore;
