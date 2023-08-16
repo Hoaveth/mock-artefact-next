@@ -66,7 +66,7 @@ export default function ResetPassword() {
               <Input
                 value={emailAddress}
                 type="email"
-                placeholder="Enter your email..."
+                placeholder="example@email.com"
                 onChange={({ target }) => setEmailAddress(target.value)}
                 isRequired
                 marginBottom={4}

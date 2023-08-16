@@ -25,7 +25,7 @@ const AvatarBox: React.FC = () => {
         width="full"
         padding={5}
         paddingTop={0}
-        marginTop={isCollapsed ? 20 : 0}
+        marginTop={isCollapsed ? 10 : 0}
         alignItems="center"
         justifyContent="center"
         flexDirection={isCollapsed ? 'row' : 'column-reverse'}
@@ -48,9 +48,10 @@ const AvatarBox: React.FC = () => {
             >
               <Text
                 fontSize={14}
-                fontFamily="Gilroy-Light"
+                fontFamily="Gilroy-Regular"
                 color="white"
                 lineHeight={0}
+                marginBottom={1}
               >
                 Kaz Miller
               </Text>
@@ -60,7 +61,7 @@ const AvatarBox: React.FC = () => {
                 fontFamily="Gilroy-Light"
                 fontSize={9}
                 lineHeight={0}
-                marginTop={1}
+                marginTop={0}
               >
                 City of Balbarat
               </Text>

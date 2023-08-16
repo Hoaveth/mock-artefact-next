@@ -18,11 +18,11 @@ export default function ServerErrorPage() {
         >
           <Text>Sorry, something went wrong.</Text>
           <Button
-            onClick={() => router.back()}
+            onClick={() => router.push('/')}
             variant={'primary'}
             marginTop={5}
           >
-            Go Back
+            Return to Main Page
           </Button>
         </CardBody>
       </Card>

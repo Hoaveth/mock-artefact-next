@@ -18,11 +18,11 @@ export default function NotFound() {
         >
           <Text>Sorry, Page is not found.</Text>
           <Button
-            onClick={() => router.back()}
+            onClick={() => router.push('/')}
             variant={'primary'}
             marginTop={5}
           >
-            Go Back
+            Return to Main Page
           </Button>
         </CardBody>
       </Card>

@@ -101,7 +101,7 @@ export default function SignIn() {
               </InputLeftElement>
               <Input
                 type="email"
-                placeholder="Enter your email..."
+                placeholder="example@email.com"
                 {...register('email')}
               />
             </InputGroup>
