@@ -7,6 +7,7 @@ import { SessionProvider } from 'next-auth/react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
+import HydrationZustand from '@/providers/HydrationZustand';
 import theme from '@/themes';
 import useSidebarStore from '@/stores/useSidebarStore';
 
@@ -29,7 +30,7 @@ export default function App({
   const showSidebar =
     !isAuthRoute && router.pathname !== '/404' && router.pathname !== '/500';
   return (
-    <>
+    <HydrationZustand>
       <Head>
         <title>Artefact</title>
         <meta property="og:title" content="Artefact" key="title" />
@@ -70,6 +71,6 @@ export default function App({
           </HStack>
         </ChakraProvider>
       </SessionProvider>
-    </>
+    </HydrationZustand>
   );
 }
