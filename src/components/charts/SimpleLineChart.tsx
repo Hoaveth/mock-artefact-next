@@ -10,7 +10,15 @@ import {
   YAxis,
 } from 'recharts';
 
-const data = [
+interface InstallationData {
+  year: number;
+  numberOfPoorInstallations: number;
+  numberOfGoodInstallations: number;
+}
+
+interface InstallationListData extends Array<InstallationData> {}
+
+const data: InstallationListData = [
   { year: 2015, numberOfPoorInstallations: 3, numberOfGoodInstallations: 10 },
   { year: 2016, numberOfPoorInstallations: 5, numberOfGoodInstallations: 12 },
   { year: 2018, numberOfPoorInstallations: 5, numberOfGoodInstallations: 1 },
@@ -18,7 +26,7 @@ const data = [
   { year: 2023, numberOfPoorInstallations: 10, numberOfGoodInstallations: 0 },
 ];
 
-const getMaxYValue = (data) => {
+const getMaxYValue = (data: InstallationListData): number => {
   let max = -Infinity;
   for (const item of data) {
     if (item.numberOfPoorInstallations > max)
@@ -29,10 +37,8 @@ const getMaxYValue = (data) => {
   return max;
 };
 
-const generateYTicks = (maxValue: number) => {
+const generateYTicks = (maxValue: number): Array<number> => {
   const extendedMaxValue = Math.ceil(maxValue / 10) * 10;
-
-  console.log(extendedMaxValue);
 
   const ticks = [];
   for (let i = 0; i <= extendedMaxValue; i += 10) {
