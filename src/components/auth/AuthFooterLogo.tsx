@@ -14,3 +14,4 @@ const AuthFooterLogo: React.FC = () => {
 };
 
 export default AuthFooterLogo;
+ 

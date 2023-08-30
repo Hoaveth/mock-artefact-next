@@ -5,20 +5,28 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 
 import { Image1, Image2, Image3, Logo } from '@public/images/auth';
-
-const settings = {
-  dots: false,
-  arrows: false,
-  fade: true,
-  infinite: true,
-  autoplay: true,
-  autoplaySpeed: 4000,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
+import useAuthCarouselStore from '@/stores/useAuthCarouselStore';
 
 const AuthImageCarousel: React.FC = () => {
+  const currentSlide = useAuthCarouselStore((state) => state.currentSlide);
+  const setCurrentSlide = useAuthCarouselStore(
+    (state) => state.setCurrentSlide
+  );
+
+  const settings = {
+    initialSlide: currentSlide, // Start from the saved or default slide
+    dots: false,
+    arrows: false,
+    fade: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    afterChange: (current: number) => setCurrentSlide(current),
+  };
+
   const cards = [
     {
       title: 'Turn your spaces into places.',
