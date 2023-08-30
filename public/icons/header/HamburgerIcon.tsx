@@ -5,23 +5,23 @@ const HamburgerIcon = (props: IconProps) => (
     <path
       d="M1.13699 1H27.0844"
       stroke="#1E1E1E"
-      stroke-width="2"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
+      strokeWidth="2"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
     />
     <path
       d="M1.13699 8.08984H27.0844"
       stroke="#1E1E1E"
-      stroke-width="2"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
+      strokeWidth="2"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
     />
     <path
       d="M1.13699 15.1699H21.052"
       stroke="#1E1E1E"
-      stroke-width="2"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
+      strokeWidth="2"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
     />
   </Icon>
 );

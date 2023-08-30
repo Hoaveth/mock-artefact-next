@@ -1,4 +1,11 @@
-import { Avatar, Box, Flex, Link as LinkChakra, Text } from '@chakra-ui/react';
+import {
+  Avatar,
+  Box,
+  Flex,
+  Link as LinkChakra,
+  Text,
+  Tooltip,
+} from '@chakra-ui/react';
 import { signOut } from 'next-auth/react';
 
 import { LogoutIcon, SettingsIcon } from '@public/icons/sidebar';
@@ -13,7 +20,7 @@ const AvatarBox: React.FC = () => {
       callbackUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/auth/sign-in`,
       redirect: true,
     });
-    localStorage.clear();
+    localStorage.removeItem('sidebar');
     removeToken();
   };
 
@@ -73,7 +80,16 @@ const AvatarBox: React.FC = () => {
         ) : (
           <>
             <LinkChakra href="/user-profile" marginTop={5}>
-              <SettingsIcon />
+              <Tooltip
+                label={'User Profile'}
+                fontSize="sm"
+                placement="right"
+                marginTop={5}
+              >
+                <span>
+                  <SettingsIcon fontSize={22} marginTop={5} />
+                </span>
+              </Tooltip>
             </LinkChakra>
             <Avatar name="Design To Chakra UI" bg="teal.300" size={'md'} />
           </>
@@ -108,7 +124,16 @@ const AvatarBox: React.FC = () => {
               <Text marginLeft={5}>Logout</Text>
             </Flex>
           ) : (
-            <LogoutIcon fontSize={22} marginTop={5} />
+            <Tooltip
+              label={'Logout'}
+              fontSize="sm"
+              placement="right"
+              marginTop={5}
+            >
+              <span>
+                <LogoutIcon fontSize={22} marginTop={5} />
+              </span>
+            </Tooltip>
           )}
         </LinkChakra>
       </Box>

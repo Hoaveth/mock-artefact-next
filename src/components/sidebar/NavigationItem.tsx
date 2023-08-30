@@ -6,6 +6,7 @@ import {
   Link as LinkChakra,
   ListIcon,
   Text,
+  Tooltip,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 
@@ -58,7 +59,11 @@ const NavigationItem: React.FC<Props> = ({
             <Text marginLeft={5}>{label}</Text>
           </Flex>
         ) : (
-          <ListIcon marginLeft={5} as={icon} fontSize={22} />
+          <Tooltip label={label} fontSize="sm" placement="right">
+            <span>
+              <ListIcon marginLeft={5} as={icon} fontSize={22} />
+            </span>
+          </Tooltip>
         )}
       </LinkChakra>
     </Box>

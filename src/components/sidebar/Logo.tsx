@@ -15,7 +15,9 @@ const Logo: React.FC = () => {
         flexDirection={isCollapsed ? 'row' : 'column'}
       >
         <Box display="flex" alignItems="center" justifyContent={'center'}>
-          {isCollapsed ? <Image src={LogoImage} alt="Artefact Logo" /> : null}
+          {isCollapsed ? (
+            <Image priority={true} src={LogoImage} alt="Artefact Logo" />
+          ) : null}
         </Box>
       </Flex>
       <Divider marginTop={3} marginBottom={3} borderColor={'whiteAlpha.400'} />
