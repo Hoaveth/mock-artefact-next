@@ -20,9 +20,19 @@ const AvatarBox: React.FC = () => {
       callbackUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/auth/sign-in`,
       redirect: true,
     });
-    localStorage.removeItem('sidebar');
+
+    keepLocalStorageItem('auth');
+
     removeToken();
   };
+
+  function keepLocalStorageItem(keyToKeep: string) {
+    for (const key in localStorage) {
+      if (key !== keyToKeep) {
+        localStorage.removeItem(key);
+      }
+    }
+  }
 
   return (
     <>

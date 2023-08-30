@@ -12,7 +12,7 @@ const useAuthCarouselStore = create<AuthCarouselStoreState>()(
       currentSlide: 0,
       setCurrentSlide: (slide: number) => set(() => ({ currentSlide: slide })),
     }),
-    { name: 'user', storage: createJSONStorage(() => localStorage) }
+    { name: 'carousel', storage: createJSONStorage(() => localStorage) }
   )
 );
 

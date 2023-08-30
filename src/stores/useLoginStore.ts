@@ -20,7 +20,7 @@ const useLoginStore = create<LoginStoreState>()(
         })),
       setEmail: (value: string) => set(() => ({ email: value })),
     }),
-    { name: 'user', storage: createJSONStorage(() => localStorage) }
+    { name: 'auth', storage: createJSONStorage(() => localStorage) }
   )
 );
 
