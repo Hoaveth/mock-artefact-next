@@ -21,31 +21,38 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { AuthFooterLogo, AuthImageCarousel } from '@/components/auth';
 import { EmailIcon, PasswordIcon, UserIcon } from '@public/icons/auth';
+import { SignInSchema, SignInSchemaType } from '@/schemas/auth/signInSchema';
+import useLoginStore from '@/stores/useLoginStore';
 
 export default function SignIn() {
+  // Hooks and states
   const toast = useToast();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const isRememberMeChecked = useLoginStore(
+    (state) => state.isRememberMeChecked
+  );
+  const setIsRememberMeChecked = useLoginStore(
+    (state) => state.setIsRememberMeChecked
+  );
+  const email = useLoginStore((state) => state.email);
+  const setEmail = useLoginStore((state) => state.setEmail);
 
-  const SignInSchema = z.object({
-    email: z.string().email(),
-    password: z
-      .string()
-      .min(3, { message: 'Must be 3 or more characters long' })
-      .max(20, { message: 'Must be 20 or less characters long' }),
-  });
-
-  type SignInSchemaType = z.infer<typeof SignInSchema>;
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInSchemaType>({ resolver: zodResolver(SignInSchema) });
+  } = useForm<SignInSchemaType>({
+    defaultValues: {
+      email: isRememberMeChecked ? email : '',
+      password: '',
+    },
+    resolver: zodResolver(SignInSchema),
+  });
 
   const onSubmit: SubmitHandler<SignInSchemaType> = async (data) => {
     setIsLoading(true);
@@ -65,6 +72,11 @@ export default function SignIn() {
 
       return;
     }
+
+    if (isRememberMeChecked) {
+      setEmail(data.email);
+    }
+
     router.replace('/');
   };
 
@@ -132,7 +144,13 @@ export default function SignIn() {
             )}
           </FormControl>
           <Flex justifyContent={'space-between'} marginBottom={5}>
-            <Checkbox fontFamily={'Gilroy-Light'}>Remember me</Checkbox>
+            <Checkbox
+              fontFamily={'Gilroy-Light'}
+              isChecked={isRememberMeChecked}
+              onChange={() => setIsRememberMeChecked(!isRememberMeChecked)}
+            >
+              Remember me
+            </Checkbox>
             <Link href="/auth/reset-password">
               <Text textStyle={'forgotPassword'}>Forgot Password?</Text>
             </Link>

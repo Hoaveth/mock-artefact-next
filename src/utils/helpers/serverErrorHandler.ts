@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export function handleServerError(error: any) {
-  console.log(error, 'ERROR');
-
   if (error.response) {
     switch (error.response.status) {
       case 401:

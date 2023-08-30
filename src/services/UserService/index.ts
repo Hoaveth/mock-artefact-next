@@ -5,6 +5,13 @@ export interface UserData {
   name: string;
 }
 
+export interface AuthenticatedUser {
+  id: number;
+  name: string;
+  role: number;
+  email: string;
+}
+
 export interface CreateUserResponse {
   data: UserData;
 }
