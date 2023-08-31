@@ -26,13 +26,13 @@ const AvatarBox: React.FC = () => {
     removeToken();
   };
 
-  function keepLocalStorageItem(keyToKeep: string) {
+  const keepLocalStorageItem = (keyToKeep: string) => {
     for (const key in localStorage) {
       if (key !== keyToKeep) {
         localStorage.removeItem(key);
       }
     }
-  }
+  };
 
   return (
     <>
@@ -119,6 +119,7 @@ const AvatarBox: React.FC = () => {
           width="full"
           justifyContent={'center'}
           onClick={() => handleLogout()}
+          href="#"
         >
           {isCollapsed ? (
             <Flex

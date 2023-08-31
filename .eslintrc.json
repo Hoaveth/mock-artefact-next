@@ -42,12 +42,6 @@
         "allowSeparatedGroups": true
       }
     ],
-    "id-length": [
-      2,
-      {
-        "exceptions": ["i", "x", "e"]
-      }
-    ],
     "@typescript-eslint/naming-convention": [
       2,
       {

@@ -68,6 +68,7 @@ export default function SignIn() {
         position: 'top',
         title: res?.error,
         status: 'error',
+        duration: 3000,
       });
 
       return;
